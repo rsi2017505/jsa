@@ -1,2 +1,2 @@
 # jsa
-# For Power Profiling on Odroid XU4
+For Power Profiling on Odroid XU4
