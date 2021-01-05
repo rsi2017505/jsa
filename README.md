@@ -2,6 +2,8 @@
 for the collection of Static Features: clang-3.8 is required
 $ clang-3.8 -Xclang -load -Xclang ./libStaticFeatureExtPass.so program-code.c 
 
+Note: Bechmarks used- dhrystone,whetstone,polybench,mibench
+
 for the collection of Dynamic Feaures: Odroid-XU4 is required
 $ ./counter-collection
 
