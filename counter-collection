@@ -1,0 +1,14 @@
+#!/bin/bash
+
+perf stat -e cpu-cycles,instructions,bus-cycles,cache-references,cache-misses,branch-instructions,branch-misses -o t2 taskset -c 4,5,6,7 ./a.out input-to-program
+perf stat -e L1-dcache-loads,L1-dcache-load-misses,L1-dcache-stores,L1-dcache-store-misses,L1-icache-loads,L1-icache-load-misses -o tt taskset -c 4,5,6,7 ./a.out input-to-program
+perf stat -e dTLB-load-misses,iTLB-load-misses,LLC-loads,LLC-load-misses,LLC-stores,LLC-store-misses -o tz taskset -c 4,5,6,7 ./a.out input-to-program
+ 
+pid=$(pgrep telnet)
+kill $pid
+cat tt >> t2
+cat tz >> t2
+ 
+awk -F, '{print $3}' power.txt > avgpower.xls
+
+
